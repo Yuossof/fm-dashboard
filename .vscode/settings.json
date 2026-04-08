@@ -1,0 +1,124 @@
+{
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "editor.cursorBlinking": "expand",
+  "workbench.settings.applyToAllProfiles": [],
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorCustomizations": {
+    "editor.background": "#060309",
+    "editor.foreground": "#c5c5c5",
+    "sideBar.background": "#040207",
+    "sideBar.foreground": "#b0aeae",
+    "sideBar.hoverBackground": "#1a0f20",
+    "sideBarSectionHeader.background": "#050208",
+    "sideBarTitle.foreground": "#cfcfcf",
+    "activityBar.background": "#030105",
+    "statusBar.background": "#05020a",
+    "titleBar.activeBackground": "#040208",
+    "titleBar.inactiveBackground": "#06030a",
+    "panel.background": "#08030e",
+    "editorGroupHeader.tabsBackground": "#07030c",
+    "tab.activeBackground": "#0c0414",
+    "tab.inactiveBackground": "#05020a",
+    "tab.activeBorder": "#807f7f",
+    "tab.hoverBackground": "#0f0916",
+    "searchEditor.background": "#0a0414",
+    "searchEditor.foreground": "#d0d0d0",
+    "searchEditor.resultMatchBackground": "#1a0a28",
+    "searchEditor.queryBackground": "#150820",
+    "list.hoverBackground": "#251535",
+    "list.activeSelectionBackground": "#2e1a40",
+    "list.inactiveSelectionBackground": "#0a051c",
+    "editorWidget.background": "#0f051a",
+    "editorWidget.foreground": "#d2d2d2",
+    "editorWidget.border": "#190922",
+    "menu.background": "#0a0412",
+    "menu.foreground": "#bcbcbc",
+    "editor.selectionBackground": "#715f6a20",
+    "editor.selectionHighlightBackground": "#5a4a5a50",
+    "editor.findMatchBackground": "#a8909028",
+    "editor.findMatchHighlightBackground": "#6a333312",
+    "editor.selectionHighlightBorder": "#6a6a55",
+    "editor.lineHighlightBorder": "#1a0a20"
+  },
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": [
+          "comment",
+          "comment.block",
+          "comment.block.documentation"
+        ],
+        "settings": {
+          "foreground": "#7f737565"
+        }
+      },
+      {
+        "scope": [
+          "string",
+          "string.quoted",
+          "string.quoted.double",
+          "string.quoted.single"
+        ],
+        "settings": {
+          "foreground": "#998080"
+        }
+      }
+    ]
+  },
+  "json.schemas": [],
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "window.menuBarVisibility": "toggle",
+  "redhat.telemetry.enabled": true,
+  "editor.fontWeight": "normal",
+  "editor.fontLigatures": true,
+  "editor.inlayHints.fontFamily": "Cascadia Code, Consolas, 'Courier New', monospace",
+  "debug.console.fontFamily": "Cascadia Code, Consolas, 'Courier New', monospace",
+  "editor.fontFamily": "Cascadia Code, Consolas, 'Courier New', monospace",
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "claudeCode.preferredLocation": "panel",
+  "editor.fontSize": 13.5,
+  "go.toolsManagement.autoUpdate": true,
+  "window.zoomLevel": 0.2,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell"
+    },
+    "Command Prompt": {
+      "path": "C:\\WINDOWS\\System32\\cmd.exe",
+      "args": []
+    },
+    "Git Bash": {
+      "source": "Git Bash",
+      "icon": "terminal-git-bash"
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "Command Prompt",
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "powermode.presets": "simple-rift"
+}
