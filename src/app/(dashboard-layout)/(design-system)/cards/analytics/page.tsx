@@ -1,13 +1,13 @@
 import type { Metadata } from "next"
 
-import { ConversionFunnel } from "../../../dashboards/analytics/_components/conversion-funnel"
-import { PerformanceOverTime } from "../../../dashboards/analytics/_components/performance-over-time"
-import { TrafficSources } from "../../../dashboards/analytics/_components/traffic-sources"
+import { ActiveProjects } from "../../../dashboards/crm/_components/active-projects"
+import { ActivityTimeline } from "../../../dashboards/crm/_components/activity-timeline"
+import { CustomerSatisfaction } from "../../../dashboards/crm/_components/customer-satisfaction"
+import { LeadSources } from "../../../dashboards/crm/_components/lead-sources"
+import { RevenueTrend } from "../../../dashboards/crm/_components/revenue-trend"
 import { SalesByCountry } from "../../../dashboards/crm/_components/sales-by-country"
 import { SalesTrend } from "../../../dashboards/crm/_components/sales-trend"
-import { ChurnRate } from "../../../dashboards/ecommerce/_components/churn-rate"
-import { RevenueBySource } from "../../../dashboards/ecommerce/_components/revenue-by-source"
-import { SalesTrend as SalesTrendV2 } from "../../../dashboards/ecommerce/_components/sales-trend"
+import { TopSalesRepresentatives } from "../../../dashboards/crm/_components/top-sales-representatives"
 
 // Define metadata for the page
 // More info: https://nextjs.org/docs/app/building-your-application/optimizing/metadata
@@ -21,13 +21,13 @@ export default function AnalyticsCardsPage() {
       <div className="col-span-full">
         <SalesTrend />
       </div>
-      <TrafficSources />
-      <SalesTrendV2 />
-      <PerformanceOverTime />
+      <RevenueTrend />
+      <LeadSources />
       <SalesByCountry />
-      <ChurnRate />
-      <RevenueBySource />
-      <ConversionFunnel />
+      <TopSalesRepresentatives />
+      <ActiveProjects />
+      <ActivityTimeline />
+      <CustomerSatisfaction />
     </section>
   )
 }

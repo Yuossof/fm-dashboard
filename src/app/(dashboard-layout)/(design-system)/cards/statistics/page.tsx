@@ -1,13 +1,14 @@
 import type { Metadata } from "next"
 
-import { NewVsReturningVisitors } from "../../../dashboards/analytics/_components/new-vs-returning-visitors"
-import { Overview as OverviewV3 } from "../../../dashboards/analytics/_components/overview"
+import { ActiveProjects } from "../../../dashboards/crm/_components/active-projects"
+import { ActivityTimeline } from "../../../dashboards/crm/_components/activity-timeline"
+import { CustomerSatisfaction } from "../../../dashboards/crm/_components/customer-satisfaction"
 import { LeadSources } from "../../../dashboards/crm/_components/lead-sources"
 import { Overview } from "../../../dashboards/crm/_components/overview"
 import { RevenueTrend } from "../../../dashboards/crm/_components/revenue-trend"
-import { CustomerInsights } from "../../../dashboards/ecommerce/_components/customer-insights"
-import { GenderDistribution } from "../../../dashboards/ecommerce/_components/gender-distribution"
-import { Overview as OverviewV2 } from "../../../dashboards/ecommerce/_components/overview"
+import { SalesByCountry } from "../../../dashboards/crm/_components/sales-by-country"
+import { SalesTrend } from "../../../dashboards/crm/_components/sales-trend"
+import { TopSalesRepresentatives } from "../../../dashboards/crm/_components/top-sales-representatives"
 
 // Define metadata for the page
 // More info: https://nextjs.org/docs/app/building-your-application/optimizing/metadata
@@ -19,15 +20,16 @@ export default function StatisticsCardsPage() {
   return (
     <section className="container grid gap-4 p-4 md:grid-cols-2">
       <Overview />
-      <OverviewV2 />
-      <OverviewV3 />
+      <SalesTrend />
       <div className="col-span-full grid gap-4 md:grid-cols-4">
         <RevenueTrend />
         <LeadSources />
-        <GenderDistribution />
-        <NewVsReturningVisitors />
+        <SalesByCountry />
+        <TopSalesRepresentatives />
       </div>
-      <CustomerInsights />
+      <ActiveProjects />
+      <ActivityTimeline />
+      <CustomerSatisfaction />
     </section>
   )
 }
