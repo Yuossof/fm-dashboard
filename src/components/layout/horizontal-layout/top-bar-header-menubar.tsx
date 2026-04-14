@@ -14,9 +14,7 @@ import { navigationsData } from "@/data/navigations"
 
 import {
   cn,
-  getDictionaryValue,
   isActivePathname,
-  titleCaseToCamelCase,
 } from "@/lib/utils"
 
 import { Badge } from "@/components/ui/badge"
@@ -41,13 +39,8 @@ export function TopBarHeaderMenubar({
   const params = useParams()
 
   const renderMenuItem = (item: NavigationRootItem | NavigationNestedItem) => {
-    const title = getDictionaryValue(
-      titleCaseToCamelCase(item.title),
-      dictionary.navigation
-    )
-    const label =
-      item.label &&
-      getDictionaryValue(titleCaseToCamelCase(item.label), dictionary.label)
+    const title = item.title
+    const label = item.label
 
     // If the item has nested items, render it with a MenubarSub.
     if (item.items) {
@@ -99,10 +92,7 @@ export function TopBarHeaderMenubar({
   return (
     <Menubar className="border-0">
       {navigationsData.map((nav) => {
-        const title = getDictionaryValue(
-          titleCaseToCamelCase(nav.title),
-          dictionary.navigation
-        )
+        const title = nav.title
         return (
           <MenubarMenu key={nav.title}>
             <MenubarTrigger>{title}</MenubarTrigger>

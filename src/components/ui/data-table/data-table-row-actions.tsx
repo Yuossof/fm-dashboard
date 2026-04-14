@@ -3,7 +3,7 @@
 import { EllipsisVertical } from "lucide-react"
 
 import type { Row } from "@tanstack/react-table"
-import type { InvoiceType } from "../../../types"
+import type { InvoiceType } from "../../../app/(dashboard-layout)/(design-system)/tables/types"
 
 import { Button } from "@/components/ui/button"
 import {

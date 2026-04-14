@@ -16,7 +16,7 @@ interface InvoiceTableViewOptionsProps<TData> {
   table: Table<TData>
 }
 
-export function InvoiceTableViewOptions<TData>({
+export function TableViewOptions<TData>({
   table,
 }: InvoiceTableViewOptionsProps<TData>) {
   return (

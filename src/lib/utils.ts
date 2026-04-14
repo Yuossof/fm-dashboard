@@ -332,11 +332,7 @@ export function getDictionaryValue(
 ) {
   const value = section[key]
 
-  if (typeof value !== "string") {
-    throw new Error(
-      `Invalid dictionary value for key: ${key}. Please ensure all values are correctly set in the dictionary files.`
-    )
-  }
+  if (typeof value === "string") return value
 
-  return value
+  return key
 }

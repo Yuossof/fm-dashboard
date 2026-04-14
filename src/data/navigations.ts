@@ -9,6 +9,16 @@ export const navigationsData: NavigationType[] = [
         href: "/",
         iconName: "ChartBar",
       },
+      {
+        title: "Tasks",
+        href: "/tasks",
+        iconName: "ListChecks",
+      },
+      {
+        title: "Departments",
+        href: "/departments",
+        iconName: "FolderTree",
+      },
     ],
   },
   {

@@ -47,9 +47,8 @@ export function FileDropzone({
       onFilesChange?.(updatedFiles)
       setLoadingFiles(new Set(newFiles.map((file) => file.id)))
 
-      // Simulate file processing
       for (const file of newFiles) {
-        await wait(2000) // Simulate 2 seconds of processing
+        await wait(2000)
         setLoadingFiles((prev) => {
           const newLoadingFiles = new Set(prev)
           newLoadingFiles.delete(file.id)
@@ -61,9 +60,7 @@ export function FileDropzone({
   )
 
   useEffect(() => {
-    if (value) {
-      setFiles(value)
-    }
+    if (value) setFiles(value)
   }, [value])
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -79,10 +76,8 @@ export function FileDropzone({
         URL.revokeObjectURL(file.url)
         return false
       }
-
       return true
     })
-
     setFiles(updatedFiles)
     onFilesChange?.(updatedFiles)
   }
@@ -92,43 +87,43 @@ export function FileDropzone({
       data-slot="file-dropzone"
       {...getRootProps()}
       className={cn(
-        "h-[17.75rem] w-full relative flex rounded-lg border-2 border-dashed border-muted-foreground cursor-pointer transition-colors hover:border-primary hover:bg-muted/50",
+        "h-52 w-full relative flex rounded-lg border border-dashed border-muted-foreground cursor-pointer transition-colors hover:border-primary hover:bg-muted/50",
         isDragActive && "border-primary bg-muted/50",
         isDisabled && "cursor-not-allowed",
         className
       )}
     >
       <input {...getInputProps()} />
-      <ScrollArea className="w-0 flex-1 p-6">
+      <ScrollArea className="w-0 flex-1 p-4">
         {files.length > 0 ? (
-          <div className="grid gap-4 grid-cols-2">
+          <div className="grid gap-3 grid-cols-3">
             {files.map((file) => (
               <div
                 key={file.id}
-                className="relative flex flex-col gap-2 rounded-lg border bg-background p-2 cursor-auto"
+                className="relative flex flex-col gap-1.5 rounded-lg border bg-background p-2 cursor-auto"
               >
                 {file.type.startsWith("image/") ? (
                   <Image
                     src={file.url}
                     alt={file.name}
-                    width={165}
-                    height={165}
+                    width={110}
+                    height={110}
                     className="self-center aspect-square rounded object-contain pointer-events-none"
                   />
                 ) : (
                   <FileThumbnail
                     fileName={file.name}
-                    className="self-center aspect-square size-full text-sm"
+                    className="self-center aspect-square size-full text-xs"
                   />
                 )}
                 {loadingFiles.has(file.id) && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-background/50 rounded">
-                    <Loader2 className="h-8 w-8 text-primary animate-spin" />
+                  <div className="absolute inset-0 flex items-center justify-center bg-background/50 rounded-lg">
+                    <Loader2 className="h-6 w-6 text-primary animate-spin" />
                   </div>
                 )}
-                <div className="space-y-1">
-                  <p className="text-sm font-medium truncate">{file.name}</p>
-                  <p className="text-xs text-muted-foreground font-semibold">
+                <div className="space-y-0.5">
+                  <p className="text-xs font-medium truncate">{file.name}</p>
+                  <p className="text-[11px] text-muted-foreground font-semibold">
                     {formatFileSize(file.size)}
                   </p>
                 </div>
@@ -142,16 +137,16 @@ export function FileDropzone({
                   }}
                   aria-label="Remove"
                 >
-                  <X className="h-4 w-4" />
+                  <X className="h-3.5 w-3.5" />
                 </Button>
               </div>
             ))}
           </div>
         ) : (
-          <div className="h-56 flex flex-col justify-center items-center gap-2 text-center p-4">
-            <UploadCloud className="h-8 w-8 text-muted-foreground" />
+          <div className="h-44 flex flex-col justify-center items-center gap-2 text-center p-4">
+            <UploadCloud className="h-7 w-7 text-muted-foreground" />
             <p className="text-sm text-muted-foreground">
-              Drag and drop some files here, or click to select files
+              Drag & drop files here, or click to select
             </p>
           </div>
         )}

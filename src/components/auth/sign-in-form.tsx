@@ -1,6 +1,7 @@
 "use client"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
+import Cookies from "js-cookie";
 
 import type { SignInFormType } from "@/types"
 
@@ -21,9 +22,13 @@ import {
 import { Input } from "@/components/ui/input"
 import { ApiError } from "@/lib/error/apiError"
 import { loginService } from "@/services/auth/login"
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { axiosInstance } from "@/lib/api/axios";
+
 
 export function SignInForm() {
-
+  const router = useRouter()
 
   const form = useForm<SignInFormType>({
     resolver: zodResolver(SignInSchema),
@@ -44,7 +49,9 @@ export function SignInForm() {
     try {
       const data = await loginService({ email, password })
       console.log(data, "login")
-      // router.push(redirectPathname)
+      Cookies.set("token", data.data.token)
+
+      router.push("/")
     } catch (error) {
       if (error instanceof ApiError) {
         toast({
@@ -60,6 +67,20 @@ export function SignInForm() {
       })
     }
   }
+
+
+  useEffect(() => {
+    const fnc = async () => {
+      try {
+        const ress = await axiosInstance.get("/profile")
+        console.log(ress.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    fnc()
+  }, [])
 
   return (
     <Form {...form}>

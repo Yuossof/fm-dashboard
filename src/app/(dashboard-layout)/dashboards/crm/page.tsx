@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 export default function CRMPage() {
   
   return (
-    <section className="container grid gap-4 p-4 md:grid-cols-2">
+    <section className=" grid gap-4 p-4 md:grid-cols-2">
       <Overview />
       <div className="col-span-full grid gap-4 md:grid-cols-4">
         <SalesTrend />

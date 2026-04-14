@@ -1,6 +1,5 @@
 import BasicTable from "./basic-table"
 import ContextualClasses from "./contextual-classes"
-import { DataTable } from "./data-table"
 import TableWithCaption from "./table-with-caption"
 import TableWithFooter from "./table-with-footer"
 
@@ -11,7 +10,6 @@ export function Tables() {
       <TableWithFooter />
       <TableWithCaption />
       <ContextualClasses />
-      <DataTable />
     </section>
   )
 }

@@ -15,9 +15,7 @@ import { navigationsData } from "@/data/navigations"
 
 import {
   cn,
-  getDictionaryValue,
   isActivePathname,
-  titleCaseToCamelCase,
 } from "@/lib/utils"
 
 import { Badge } from "@/components/ui/badge"
@@ -81,13 +79,8 @@ export function CommandMenu({
   }, [])
 
   const renderMenuItem = (item: NavigationRootItem | NavigationNestedItem) => {
-    const title = getDictionaryValue(
-      titleCaseToCamelCase(item.title),
-      dictionary.navigation
-    )
-    const label =
-      item.label &&
-      getDictionaryValue(titleCaseToCamelCase(item.label), dictionary.label)
+    const title = item.title
+    const label = item.label
 
     // If the item has nested items, render it with a collapsible dropdown.
     if (item.items) {
@@ -141,10 +134,7 @@ export function CommandMenu({
 
   const navigationGroups = useMemo(() => {
     return navigationsData.map((nav) => {
-      const title = getDictionaryValue(
-        titleCaseToCamelCase(nav.title),
-        dictionary.navigation
-      )
+      const title = nav.title
 
       return (
         <CommandGroup
@@ -158,7 +148,7 @@ export function CommandMenu({
         </CommandGroup>
       )
     })
-  }, [dictionary, pathname])
+  }, [pathname])
 
   return (
     <>

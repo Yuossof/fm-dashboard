@@ -1,7 +1,7 @@
 "use client"
 
 import type { ColumnDef } from "@tanstack/react-table"
-import type { InvoiceType } from "../../../types"
+import type { InvoiceType } from "../../../app/(dashboard-layout)/(design-system)/tables/types"
 
 import { Checkbox } from "@/components/ui/checkbox"
 import { DataTableColumnHeader } from "@/components/ui/data-table/data-table-column-header"

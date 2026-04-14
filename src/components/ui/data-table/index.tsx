@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import type { ReactNode } from "react"
 import {
   flexRender,
   getCoreRowModel,
@@ -11,12 +12,11 @@ import {
 } from "@tanstack/react-table"
 
 import type {
+  ColumnDef,
   ColumnFiltersState,
   SortingState,
-  VisibilityState,
 } from "@tanstack/react-table"
 
-import { invoicesData } from "../../../_data/invoices"
 
 import {
   Card,
@@ -25,8 +25,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+
 import { DataTablePagination } from "@/components/ui/data-table/data-table-pagination"
 import { ScrollArea } from "@/components/ui/scroll-area"
+
 import {
   Table,
   TableBody,
@@ -35,40 +37,65 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { columns } from "./columns"
-import { InvoiceTableToolbar } from "./data-table-toolbar"
 
-export function DataTable() {
+import { TableToolbar } from "./data-table-toolbar"
+
+interface Props<T> {
+  columns?: ColumnDef<T>[]
+  data?: T[]
+  showAddButton?: boolean
+  onAddClick?: () => void
+  children?: ReactNode
+  searchColumnId?: string
+  searchPlaceholder?: string
+}
+export function DataTable<T>({
+  columns = [],
+  data = [],
+  showAddButton = false,
+  onAddClick,
+  children,
+  searchColumnId = "id",
+  searchPlaceholder = "Search...",
+}: Props<T>) {
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
-  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
-  const [rowSelection, setRowSelection] = useState({})
 
   const table = useReactTable({
-    data: invoicesData,
-    columns: columns,
+    data,
+    columns,
+
     getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
-    onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
-    onColumnVisibilityChange: setColumnVisibility,
-    onRowSelectionChange: setRowSelection,
+    getPaginationRowModel: getPaginationRowModel(),
+
+    onSortingChange: setSorting,
+    onColumnFiltersChange: setColumnFilters,
+
     state: {
       sorting,
       columnFilters,
-      columnVisibility,
-      rowSelection,
     },
-  })
 
+    enableSorting: true,
+    enableFilters: true,
+  })
   return (
     <Card>
+      {children}
+
       <CardHeader className="flex-row justify-between items-center gap-x-1.5 space-y-0">
         <CardTitle>Data Table</CardTitle>
-        <InvoiceTableToolbar table={table} />
+        <TableToolbar
+          table={table}
+          onAddClick={onAddClick}
+          showAddButton={showAddButton}
+          searchColumnId={searchColumnId}
+          searchPlaceholder={searchPlaceholder}
+        />
       </CardHeader>
+
       <CardContent className="p-0">
         <ScrollArea
           orientation="horizontal"
@@ -79,25 +106,28 @@ export function DataTable() {
               {table.getHeaderGroups().map((headerGroup) => (
                 <TableRow key={headerGroup.id}>
                   {headerGroup.headers.map((header) => (
-                    <TableHead key={header.id}>
+                    <TableHead
+                      key={header.id}
+                      onClick={header.column.getToggleSortingHandler()}
+                      className="cursor-pointer select-none"
+                    >
                       {header.isPlaceholder
                         ? null
                         : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+
                     </TableHead>
                   ))}
                 </TableRow>
               ))}
             </TableHeader>
+
             <TableBody>
-              {table.getRowModel().rows?.length ? (
+              {table.getRowModel().rows.length ? (
                 table.getRowModel().rows.map((row) => (
-                  <TableRow
-                    key={row.id}
-                    data-state={row.getIsSelected() && "selected"}
-                  >
+                  <TableRow key={row.id}>
                     {row.getVisibleCells().map((cell) => (
                       <TableCell key={cell.id}>
                         {flexRender(
@@ -111,7 +141,7 @@ export function DataTable() {
               ) : (
                 <TableRow>
                   <TableCell
-                    colSpan={columns.length}
+                    colSpan={Math.max(columns.length, 1)}
                     className="h-24 text-center"
                   >
                     No results.
@@ -122,6 +152,7 @@ export function DataTable() {
           </Table>
         </ScrollArea>
       </CardContent>
+
       <CardFooter className="block py-3">
         <DataTablePagination table={table} />
       </CardFooter>
