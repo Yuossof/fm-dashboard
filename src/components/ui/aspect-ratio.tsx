@@ -9,3 +9,5 @@ export function AspectRatio({
 }: ComponentProps<typeof AspectRatioPrimitive.Root>) {
   return <AspectRatioPrimitive.Root data-slot="aspect-ratio" {...props} />
 }
+
+

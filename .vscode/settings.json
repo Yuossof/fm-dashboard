@@ -95,7 +95,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "claudeCode.preferredLocation": "panel",
-  "editor.fontSize": 13.5,
+  "editor.fontSize": 14,
   "go.toolsManagement.autoUpdate": true,
   "window.zoomLevel": 0.2,
   "[json]": {

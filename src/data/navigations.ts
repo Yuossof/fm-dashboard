@@ -19,6 +19,11 @@ export const navigationsData: NavigationType[] = [
         href: "/departments",
         iconName: "FolderTree",
       },
+      {
+        title: "Services",
+        href: "/services",
+        iconName: "Settings",
+      },
     ],
   },
   {

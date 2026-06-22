@@ -4,11 +4,11 @@ import { BasicFileDropzone } from '@/components/ui/file-dropzone/_components/bas
 import { Input } from '@/components/ui/input'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Textarea } from '@/components/ui/textarea'
-import { getIndividualsByDepartmentService } from '@/services/Individuals/departments_Individuals'
-import { FileType } from '@/types'
 import { Plus } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { createDepartmentService } from '../_services/create_department_service'
+import { ApiError } from '@/lib/error/apiError'
+import { useToast } from '@/hooks/use-toast'
 
 type Props = {
     isAddDialogOpen: boolean;
@@ -16,6 +16,7 @@ type Props = {
 }
 
 const AddDepartmentBox = ({ isAddDialogOpen, setIsAddDialogOpen }: Props) => {
+    const { toast } = useToast()
     const [data, setData] = useState({
         name: "",
         name_ar: "",
@@ -41,11 +42,18 @@ const AddDepartmentBox = ({ isAddDialogOpen, setIsAddDialogOpen }: Props) => {
         if (departmentImage) {
             formdata.append("image", departmentImage)
         }
-        
+
         try {
             const data = await createDepartmentService("general-manager", formdata)
+            console.log(data)
         } catch (error) {
-            console.log(error)
+            if (error instanceof ApiError) {
+                toast({
+                    title: error.message,
+                    description: "Something went wrong",
+                    variant: "destructive"
+                })
+            }
         }
     }
     return (
