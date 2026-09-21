@@ -11,10 +11,22 @@ export const loginService = async (data: LoginDTO) => {
         return response.data
     } catch (error) {
         if (axios.isAxiosError(error)) {
-            console.log(error, "axios errror")
-            console.error(error.response?.data)
-            console.error(error.response?.headers)
+            console.log("MESSAGE:", error.message);
+            console.log("CODE:", error.code);
+
+            console.log("CONFIG:", error.config);
+
+            console.log("REQUEST:", error.request);
+
+            console.log("RESPONSE:", error.response);
+
+            if (error.response) {
+                console.log("STATUS:", error.response.status);
+                console.log("DATA:", error.response.data);
+                console.log("HEADERS:", error.response.headers);
+            }
         }
-        handleApiError(error)
+
+        throw error;
     }
 }

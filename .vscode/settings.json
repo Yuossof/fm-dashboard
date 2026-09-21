@@ -75,7 +75,7 @@
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.defaultFormatter": "TypeScriptTeam.native-preview"
   },
   "window.menuBarVisibility": "toggle",
   "redhat.telemetry.enabled": true,
